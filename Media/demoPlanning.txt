@@ -1,2 +1,16 @@
 demo planning - May 28, 2020
 
+Open Blinds
+OBS basic 
+Open PyCharm
+Erase Whiteboard
+
+Start Record
+Use Red Starburst
+Draw Star
+Clear
+Write Hello 
+Stop/ Start
+Write World
+Escape
+Stop Record
