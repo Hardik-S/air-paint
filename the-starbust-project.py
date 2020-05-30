@@ -66,7 +66,8 @@ while True:
 # optical flow start #
 
 # creates array using float values of object co-ordinates
-old_points = np.array([[x, y]], dtype=np.float32).reshape(-1, 1, 2)
+# we use y+70 instead of y to account for the cropping beforehand
+old_points = np.array([[x, y+70]], dtype=np.float32).reshape(-1, 1, 2)
 
 # creates mask
 mask = np.zeros_like(input_image)
@@ -160,7 +161,7 @@ while True:
             print("paintbrush cannot be detected")
         if err >= .8:
             print("High error, slow down!")
-        if err > 1.6:
+        if err > 8.0:
             endAll = True
 
     # esc key pressed = break
