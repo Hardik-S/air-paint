@@ -2,10 +2,11 @@
 #     Computer-Vision (CV) Project (originally air-paint)
 #     Created on May 29, 2020
 #     github.com/Hardik-S | hardik-s.github.io
+#     If reading: Line 7-25, 40-65, 28-37, 69-end
 
-import cv2 as cv
-import numpy as np
-import time as t
+import cv2 as cv    # Computer Vision is the backbone of this project
+import numpy as np  # Numpy is the brains of this project
+import time as t    # Time is that nephew you like having around for fun
 
 # global vars #
 x = 0
@@ -43,7 +44,7 @@ cv.setMouseCallback("Canvas", take_input, param=None)
 
 while True:
 
-    # captures camera footage, flips horizontally, converts to grayscale
+    # captures camera footage, flips horizontally to match movement, converts to grayscale
     blank, input_image = capture.read()
     input_image = cv.flip(input_image, 1)
     grayscale_input_image = cv.cvtColor(input_image, cv.COLOR_BGR2GRAY)
@@ -66,15 +67,15 @@ while True:
 # optical flow start #
 
 # creates array using float values of object co-ordinates
-# we use y+70 instead of y to account for the cropping beforehand
+# we use y+70 instead of y to account for the cropping beforehand (line 52)
 old_points = np.array([[x, y+70]], dtype=np.float32).reshape(-1, 1, 2)
 
-# creates mask
+# creates mask using a blank canvas and inputting the co-ordinates passed by the input_image
 mask = np.zeros_like(input_image)
 
 while True:
 
-    # captures camera footage, flips horizontally, converts to grayscale
+    # captures camera footage, flips horizontally to match movement, converts to grayscale
     blank, new_input_image = capture.read()
     new_input_image = cv.flip(new_input_image, 1)
     new_grayscale = cv.cvtColor(new_input_image, cv.COLOR_BGR2GRAY)
@@ -102,18 +103,19 @@ while True:
             elif not drawing:
                 drawing = True
 
-        # zeroes all values, clearing the board
+        # zeroes all values, effectively clearing the board
         elif cv.waitKey(1) == ord('c'):
             mask = np.zeros_like(new_input_image)
 
         # traces line based on object movement
+        # colour is determined by BGR values not RGB
         if drawing:
             mask = (cv.line(mask, (a, b), (x, y), (247, 255, 130), 3))
 
         # img, center, radius, BGR colour [, thickness[, lineType[, shift]]]
         cv.circle(new_input_image, (x, y), 3, (247, 255, 130), -1)
 
-    # define new image with the raw drawing masked on top at 50% opacity
+    # define new image with the raw drawing masked on top at 50% opacity and original canvas at 70%
     new_input_image = cv.addWeighted(mask, 0.5, new_input_image, 0.7, 0)
 
     # counts iterations through loop, calculates Frames Per Second
@@ -149,7 +151,7 @@ while True:
     old_points = new_points.reshape(-1, 1, 2)
 
     # checks every ~1s (based on CPU) to print status and error
-    # if error is too high, calls for end
+    # if error is too high (10x higher than dangerous, but it's almost logarithmic regardless), calls for end
     if counter % 30 == 0:
         print('---', counter / 30, '---')
         print("time:", t.strftime("%H:%M:%S", t.localtime()))
