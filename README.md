@@ -30,3 +30,7 @@ Uses open-computer-vision (Open-cv) to track the object movement of a starburst.
  
  - Basic: edit the BGR values anywhere for your line colour of choice.
  - Advanced: read the comments
+ 
+ ## Another Example
+ 
+ ![](https://github.com/Hardik-S/the-starburst-project/blob/master/Media/mamu%20rose.png)
