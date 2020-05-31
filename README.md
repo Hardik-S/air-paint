@@ -12,8 +12,8 @@ Uses open-computer-vision (Open-cv) to track the object movement of a starburst.
 
 - Download _the-starbust-project.py_ and run it using an environment of your choice. 
 - If using External Webcam, ensure that it is set as the default. 
-  > Alternatively, change line 26 to `capture = cv.VideoCapture([0/1/2])` dependent on the camera you would like to use.
-  > Alternatively, disable the local camera's driver directly forcing the program to find the first working camera.
+  - Alternatively, change line 26 to `capture = cv.VideoCapture([0/1/2])` dependent on the camera you would like to use.
+  - Alternatively, disable the local camera's driver directly forcing the program to find the first working camera.
  - On run, Canvas will open up. Navigate cursor to relevant starburst (pointer) and left click. 
  - Raw and Mask windows will open up. Paint the air with your starburst! 
  
