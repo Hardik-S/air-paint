@@ -31,6 +31,12 @@ Uses open-computer-vision (Open-cv) to track the object movement of a starburst.
  - Basic: edit the BGR values anywhere for your line colour of choice.
  - Advanced: read the comments
  
- ## Another Example
+ ## Future Additions
+ - Colour change on key press (b = blue, r = red, x = swap to next) 
+ - Automatic screenshot of project on end
+ - Automatic recording of project on key press (v = video (tape)) 
+ - Port to Web using Django? 
+ 
+ ## Another Example with my Mom
  
  ![](https://github.com/Hardik-S/the-starburst-project/blob/master/Media/mamu%20rose.png)
