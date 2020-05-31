@@ -17,6 +17,7 @@ counter = 0
 drawing = True
 endAll = False
 mouseClick = False
+stats = False
 
 # start time
 t0 = t.time()
@@ -98,6 +99,7 @@ while True:
 
         # flips between drawing and not drawing on 'S' press
         if cv.waitKey(1) == ord('s'):
+            print("# S #")
             if drawing:
                 drawing = False
             elif not drawing:
@@ -105,6 +107,7 @@ while True:
 
         # zeroes all values, effectively clearing the board
         elif cv.waitKey(1) == ord('c'):
+            print("# C #")
             mask = np.zeros_like(new_input_image)
 
         # traces line based on object movement
@@ -153,18 +156,20 @@ while True:
     # checks every ~1s (based on CPU) to print status and error
     # if error is too high (10x higher than dangerous, but it's almost logarithmic regardless), calls for end
     if counter % 30 == 0:
-        print('---', counter / 30, '---')
-        print("time:", t.strftime("%H:%M:%S", t.localtime()))
-        print(FPS)
-        print("status: ")
+        print("Drawing: ", drawing)
+        if stats:
+            print('---', counter / 30, '---')
+            print("time:", t.strftime("%H:%M:%S", t.localtime()))
+            print(FPS)
+            print("status: ")
         if status == 1:
-            print("paintbrush detected")
+            print("Paintbrush detected")
         if status == 0:
-            print("paintbrush cannot be detected")
-        if err >= .8:
+            print("Paintbrush cannot be detected")
+        if err >= 16.0:
             print("High error, slow down!")
-        if err > 8.0:
-            endAll = True
+        # if err > 16.0:
+        #     endAll = True
 
     # esc key pressed = break
     if cv.waitKey(1) & 0xff == 27:
