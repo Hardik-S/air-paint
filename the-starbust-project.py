@@ -154,7 +154,7 @@ while True:
     old_points = new_points.reshape(-1, 1, 2)
 
     # checks every ~1s (based on CPU) to print status and error
-    # if error is too high (10x higher than dangerous, but it's almost logarithmic regardless), calls for end
+    # if error is too high (4x higher than dangerous), calls for end
     if counter % 30 == 0:
         print("Drawing: ", drawing)
         if stats:
@@ -168,8 +168,8 @@ while True:
             print("Paintbrush cannot be detected")
         if err >= 16.0:
             print("High error, slow down!")
-        # if err > 16.0:
-        #     endAll = True
+        if err > 64.0:
+            endAll = True
 
     # esc key pressed = break
     if cv.waitKey(1) & 0xff == 27:
@@ -178,6 +178,7 @@ while True:
     # if error too high, break.
     # prints time passed from launch to crash
     if endAll:
+        print("Error code: [77]")
         print("Error was too large.")
         print("Lasted ", round((t.time()-t0), 1), " seconds total.")
         break
