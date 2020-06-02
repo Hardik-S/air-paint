@@ -37,11 +37,11 @@ Uses open-computer-vision (Open-cv) to track the object movement of a starburst.
  - Automatic recording of project on key press (v = video (tape)) 
  - Port to Web using Django? 
  
- ## Another Example with my Mom
+ ## Another Example with My Mom
  
  ![](https://github.com/Hardik-S/the-starburst-project/blob/master/Media/mamu%20rose.png)
 
 
-## Another Example wih My Girlfriend
+## Another Example with My Girlfriend
 
 ![](https://github.com/Hardik-S/the-starburst-project/blob/master/Media/ananu%20love.png)
