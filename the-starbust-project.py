@@ -1,6 +1,7 @@
 #     The Starburst Project V2- Hardik Shrestha - hardik.ho@gmail.com
 #     Computer-Vision (CV) Project (originally air-paint)
 #     Created on May 29, 2020
+#     Ported to Google Colab on June 6, 2020
 #     github.com/Hardik-S | hardik-s.github.io
 #     If reading: Line 7-25, 40-65, 28-37, 69-end
 
